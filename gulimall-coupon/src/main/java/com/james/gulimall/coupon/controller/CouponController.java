@@ -5,7 +5,6 @@ import com.james.common.utils.R;
 import com.james.gulimall.coupon.entity.CouponEntity;
 import com.james.gulimall.coupon.service.CouponService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,16 +26,16 @@ import java.util.Map;
 @RequestMapping("coupon/coupon")
 public class CouponController {
 
-    @Value("${coupon.user.name}")
-    private String username;
+//    @Value("${coupon.user.name}")
+//    private String username;
 
     @Autowired
     private CouponService couponService;
 
-    @RequestMapping("/usernameTest")
-    public R usernameTest() {
-        return R.ok().put("username", username);
-    }
+//    @RequestMapping("/usernameTest")
+//    public R usernameTest() {
+//        return R.ok().put("username", username);
+//    }
 
     @RequestMapping("/memberCouponTest")
     public R memberCouponsTest() {

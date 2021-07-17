@@ -1,0 +1,10 @@
+#配置中心地址和命名空间,注意配置中心的配置需要写在bootstrap.yml文件里,加载优先级高于application.yml
+spring:
+  application:
+    name: gulimall-gateway
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        namespace: 27b3d5c7-7bfe-487f-86a1-ac5803b95d8a
+        file-extension: yaml
