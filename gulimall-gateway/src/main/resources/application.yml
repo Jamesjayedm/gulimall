@@ -4,8 +4,6 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
-#        需要和renren-fast一个命名空间，否则无法调用
-        namespace: 27b3d5c7-7bfe-487f-86a1-ac5803b95d8a
     #网关配置
     gateway:
       routes:
@@ -18,13 +16,23 @@ spring:
           predicates:
             - Query=url,qq
 
+        - id: product-route
+          uri: lb://gulimall-product
+          predicates:
+            - Path=/api/product/**     #需要优先级更高，要在/api/**规则前面，否则无法生效
+          filters:
+            - RewritePath=/api/?(?<segment>.*), /$\{segment}
+          # http://localhost:88/api/product/category/list/tree 改为 http://localhost:10000/product/category/list/tree
+
         - id: admin-route
           uri: lb://renren-fast
           predicates:
             - Path=/api/**
           filters:
             - RewritePath=/api/?(?<segment>.*), /renren-fast/$\{segment}
-          # 改变路由规则，将/api/captcha.jpg改为renren-fast/captcha.jpg
+          # 改变路由规则，路径重写，将/api/captcha.jpg改为renren-fast/captcha.jpg
+
+
 
   application:
     name: gulimall-gateway
