@@ -1,4 +1,4 @@
-package com.james.gulimallgateway;
+package com.james.gulimall.gateway;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
